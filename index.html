@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DIPcoin ($DIP) — Buy the DIP</title>
+
+  <meta
+    name="description"
+    content="DIPcoin ($DIP) — Buy the DIP. A deliberately vulgar Solana memecoin."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #071010;
+      color: #f4e9e3;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background */
+    .glow {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: rgba(0, 255, 120, 0.07);
+      filter: blur(100px);
+      top: -250px;
+      right: -200px;
+      pointer-events: none;
+    }
+
+    .glow2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(255, 150, 110, 0.06);
+      filter: blur(100px);
+      bottom: 0;
+      left: -250px;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    nav {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand span {
+      color: #8cff55;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 13px;
+      color: #b9c2c0;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 28px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #c9d0ce;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(64px, 10vw, 125px);
+      line-height: 0.82;
+      letter-spacing: -7px;
+      font-weight: 1000;
+      color: #f4ddd4;
+      text-shadow:
+        0 3px 0 #1a1110,
+        0 0 40px rgba(255, 180, 150, 0.08);
+    }
+
+    .ticker {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      margin-top: 22px;
+      color: #8cff55;
+    }
+
+    .headline {
+      font-size: clamp(27px, 4vw, 46px);
+      line-height: 1.05;
+      margin-top: 24px;
+      max-width: 620px;
+      font-weight: 800;
+    }
+
+    .headline em {
+      color: #8cff55;
+      font-style: normal;
+    }
+
+    .intro {
+      margin-top: 22px;
+      max-width: 570px;
+      color: #9fa9a7;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: #8cff55;
+      color: #071010;
+      border-color: #8cff55;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    /* Hero image */
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.55),
+        0 0 50px rgba(255, 150, 110, 0.07);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-label {
+      color: #8cff55;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 0.95;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .story {
+      max-width: 760px;
+      color: #aab3b1;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .story strong {
+      color: #f4e9e3;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 45px;
+    }
+
+    .stat {
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .stat-value {
+      font-size: 23px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #f4ddd4;
+    }
+
+    .stat-name {
+      color: #7f8a88;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* DIP language */
+    .dip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .dip-card {
+      min-height: 150px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .dip-card h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .dip-card p {
+      color: #899391;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    .cta h2 {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .cta p {
+      color: #929d9a;
+      max-width: 600px;
+      margin: 20px auto 0;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px;
+      color: #66716f;
+      font-size: 12px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    footer strong {
+      color: #9ba5a3;
+    }
+
+    /* Mobile */
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 45px;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dip-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero,
+      section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        padding: 18px;
+      }
+
+      .stat-value {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="glow"></div>
+    <div class="glow2"></div>
+
+    <nav>
+      <a href="#" class="brand">DIP<span>COIN</span></a>
+
+      <div class="nav-links">
+        <a href="#about">ABOUT</a>
+        <a href="#dip">THE DIP</a>
+        <a href="#token">TOKEN</a>
+        <a href="mailto:dipcoinhq@gmail.com">CONTACT</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- HERO -->
+      <div class="hero">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">SOLANA MEMECOIN • $DIP</div>
+
+          <h1>DIP</h1>
+
+          <div class="ticker">$DIP</div>
+
+          <div class="headline">
+            They told you to <em>buy the DIP.</em>
+          </div>
+
+          <p class="intro">
+            So we made a coin out of it.
+            DIPcoin is a deliberately vulgar, absurdist memecoin
+            built around crypto's favorite four-letter word.
+          </p>
+
+          <div class="buttons">
+            <a href="#token" class="button primary">EXPLORE $DIP</a>
+            <a href="mailto:dipcoinhq@gmail.com" class="button">CONTACT</a>
+          </div>
+
+        </div>
+
+        <div class="hero-image">
+          <img src="dipcoin.jpg" alt="DIPcoin - Dick In Pussy Coin">
+        </div>
+
+      </div>
+
+
+      <!-- ABOUT -->
+      <section id="about">
+
+        <div class="section-label">THE STORY</div>
+
+        <h2>WHAT IS DIP?</h2>
+
+        <div class="story">
+
+          <p>
+            Crypto already had the <strong>DIP</strong>.
+          </p>
+
+          <p>
+            Traders see a red chart and hear three words:
+            <strong>BUY THE DIP.</strong>
+          </p>
+
+          <p>
+            DIPcoin simply gave the acronym another meaning.
+          </p>
+
+          <p>
+            <strong>Dick In Pussy Coin.</strong>
+          </p>
+
+          <p>
+            That's it. That's the joke.
+            No revolutionary blockchain.
+            No fake financial promises.
+            Just a Solana memecoin built around one extremely
+            recognizable word.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- DIP LANGUAGE -->
+      <section id="dip">
+
+        <div class="section-label">DIP CULTURE</div>
+
+        <h2>WELCOME TO DIP SEASON.</h2>
+
+        <div class="dip-grid">
+
+          <div class="dip-card">
+            <h3>DIP HUNTER</h3>
+            <p>
+              Watching the charts. Waiting for the DIP.
+            </p>
+          </div>
+
+          <div class="dip-card">
+            <h3>DEEP DIP</h3>
+            <p>
+              When the DIP gets deeper than expected.
+            </p>
+          </div>
+
+          <div class="dip-card">
+            <h3>DIP MODE</h3>
+            <p>
+              Fully committed to the DIP.
+            </p>
+          </div>
+
+          <div class="dip-card">
+            <h3>DIP ALERT</h3>
+            <p>
+              Something DIP-worthy just happened.
+            </p>
+          </div>
+
+          <div class="dip-card">
+            <h3>DIP ZONE</h3>
+            <p>
+              Where the DIP starts getting interesting.
+            </p>
+          </div>
+
+          <div class="dip-card">
+            <h3>DIP SEASON</h3>
+            <p>
+              The only season that never really ends.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TOKEN -->
+      <section id="token">
+
+        <div class="section-label">THE TOKEN</div>
+
+        <h2>$DIP</h2>
+
+        <p class="story">
+          DIPcoin lives on Solana and trades through the
+          decentralized ecosystem. The numbers below represent
+          the current planned token structure.
+        </p>
+
+        <div class="stats">
+
+          <div class="stat">
+            <div class="stat-value">100M</div>
+            <div class="stat-name">Original Supply</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-value">60M</div>
+            <div class="stat-name">Burned</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-value">40M</div>
+            <div class="stat-name">Remaining</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-value">SOLANA</div>
+            <div class="stat-name">Blockchain</div>
+          </div>
+
+        </div>
+
+        <div class="buttons" style="margin-top:30px;">
+          <a href="mailto:dipcoinhq@gmail.com" class="button">
+            DIPcoin HQ
+          </a>
+        </div>
+
+      </section>
+
+
+      <!-- FINAL CTA -->
+      <section class="cta">
+
+        <div class="section-label">THE DIP IS HERE</div>
+
+        <h2>
+          BUY THE DIP.
+          <br>
+          YOU KNOW WHICH ONE.
+        </h2>
+
+        <p>
+          DIPcoin is a meme. Nothing here is financial advice
+          or a promise of future value.
+        </p>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      <strong>DIPcoin • $DIP</strong><br><br>
+      Dick In Pussy Coin<br>
+      Solana Memecoin<br><br>
+      © 2026 DIPcoin. All memes reserved.
+    </footer>
+
+  </div>
+
+</body>
+</html>
