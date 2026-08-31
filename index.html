@@ -20,6 +20,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 20px;
     }
 
     body {
@@ -40,7 +41,6 @@
       overflow: hidden;
     }
 
-    /* Background */
     .glow {
       position: absolute;
       width: 650px;
@@ -65,7 +65,6 @@
       pointer-events: none;
     }
 
-    /* Navigation */
     nav {
       width: 100%;
       max-width: 1200px;
@@ -99,7 +98,6 @@
       color: #ffffff;
     }
 
-    /* Hero */
     .hero {
       max-width: 1200px;
       margin: auto;
@@ -180,6 +178,7 @@
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(255,255,255,0.04);
       transition: 0.2s ease;
+      cursor: pointer;
     }
 
     .button.primary {
@@ -193,7 +192,6 @@
       filter: brightness(1.08);
     }
 
-    /* Hero image */
     .hero-image {
       position: relative;
     }
@@ -208,7 +206,6 @@
         0 0 50px rgba(255, 150, 110, 0.07);
     }
 
-    /* Sections */
     section {
       max-width: 1200px;
       margin: auto;
@@ -244,7 +241,6 @@
       color: #f4e9e3;
     }
 
-    /* Stats */
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -273,7 +269,6 @@
       letter-spacing: 2px;
     }
 
-    /* DIP language */
     .dip-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -300,7 +295,6 @@
       font-size: 14px;
     }
 
-    /* CTA */
     .cta {
       text-align: center;
       padding-top: 120px;
@@ -319,7 +313,6 @@
       line-height: 1.6;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid rgba(255,255,255,0.08);
       padding: 28px;
@@ -334,7 +327,6 @@
       color: #9ba5a3;
     }
 
-    /* Mobile */
     @media (max-width: 850px) {
       .hero {
         grid-template-columns: 1fr;
@@ -386,13 +378,14 @@
 
 <body>
 
-  <div class="page">
+  <div class="page" id="home">
 
     <div class="glow"></div>
     <div class="glow2"></div>
 
     <nav>
-      <a href="#" class="brand">DIP<span>COIN</span></a>
+      <!-- Home: scrolls to the top of the page -->
+      <a href="#home" class="brand">DIP<span>COIN</span></a>
 
       <div class="nav-links">
         <a href="#about">ABOUT</a>
@@ -571,8 +564,9 @@
 
         </div>
 
+        <!-- HQ now returns to the top instead of opening Outlook -->
         <div class="buttons" style="margin-top:30px;">
-          <a href="mailto:dipcoinhq@gmail.com" class="button">
+          <a href="#home" class="button">
             DIPcoin HQ
           </a>
         </div>
