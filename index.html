@@ -192,6 +192,52 @@
       filter: brightness(1.08);
     }
 
+    .hero-token-info {
+      margin-top: 26px;
+      max-width: 620px;
+    }
+
+    .hero-contract {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .hero-contract-address {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #899391;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .hero-copy-button {
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      color: #f4e9e3;
+      padding: 9px 12px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .hero-market-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     .hero-image {
       position: relative;
     }
@@ -333,7 +379,53 @@
         padding-top: 45px;
       }
 
-      .hero-image {
+      .hero-token-info {
+      margin-top: 26px;
+      max-width: 620px;
+    }
+
+    .hero-contract {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .hero-contract-address {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #899391;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .hero-copy-button {
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      color: #f4e9e3;
+      padding: 9px 12px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .hero-market-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .hero-image {
         order: -1;
       }
 
@@ -421,6 +513,24 @@
           <div class="buttons">
             <a href="#token" class="button primary">EXPLORE $DIP</a>
             <a href="#contact" class="button">CONTACT</a>
+          </div>
+
+          <div class="hero-token-info">
+            <div class="hero-contract">
+              <div class="hero-contract-address" id="heroContractAddress">
+                CONTRACT ADDRESS GOES HERE
+              </div>
+              <button class="hero-copy-button" id="heroCopyContract" type="button">COPY</button>
+            </div>
+
+            <div class="hero-market-links">
+              <a href="#" class="button" target="_blank" rel="noopener noreferrer">
+                DEXSCREENER
+              </a>
+              <a href="#" class="button" target="_blank" rel="noopener noreferrer">
+                JUPITER
+              </a>
+            </div>
           </div>
 
         </div>
